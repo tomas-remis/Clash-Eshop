@@ -1,0 +1,1 @@
+Kokot smrdis
