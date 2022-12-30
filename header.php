@@ -1,26 +1,12 @@
-<html>
-    <head>
-        <style>
-            #header{
-                background-color: gray;
-                height: 150px;
-                margin: 0px;
-                margin-bottom: 20px;
-            }
-
-            body{
-                padding: 0;
-                margin: 0;
-            }
-        </style>
-    </head>
-    <body>
-        <nav id="header">
-    </nav>
-    </body>
-</html>
-
 <?php
+$is_in_verified = gettype(strpos($_SERVER["REQUEST_URI"], "unverified")) == "boolean";
+function add_header_elements(){
+    GLOBAL $is_in_verified;
+    if($is_in_verified){
+        echo "<table><tr><td><a href='home.php'>Home</a></td><td><a href='browse.php'>Browse cards</a></td><td><a href='orders.php'>My orders</a></td><td><a href='logout.php'>Log out</a></td></tr></table>";
+    }
+}
+
 session_set_cookie_params(7200,'/');
 session_start();
 
@@ -28,9 +14,18 @@ if(isset($_GET["sub"])){
     session_unset();
 }
 
-echo $_SERVER["REQUEST_URI"];
-
-if(!isset($_SESSION["user"]) && gettype(strpos($_SERVER["REQUEST_URI"], "unverified")) == "boolean"){
-    header('Location: unverified/login.php');
+if(!isset($_SESSION["login"]) && $is_in_verified){
+    header('Location: /clash/unverified/login.php');
 }
 ?>
+
+<html>
+    <head>
+        <link rel="stylesheet" href="/clash/style.css", type="text/css">
+    </head>
+    <body>
+        <nav id="header">
+            <?php add_header_elements();?>
+        </nav>
+    </body>
+</html>
