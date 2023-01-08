@@ -26,20 +26,25 @@ if(isset($_POST["sub"])){
     }
 }
 ?>
+<html>
+    <head>
+        <?php echo load_head();?>
+    </head>
+    <body>
+        <?php echo load_body();?>
+        <h1>Log in</h1>
+        <form method="POST" action="login.php">
+            <input type="text" placeholder="Username" name="login"/>
+            <input type="password" placeholder="Password" name="pass"/>
+            <input type="email" placeholder="Email" name="email"/>
+            <input type="submit" name="sub"/>
+        </form>
 
-<body>
-    <h1>Log in</h1>
-    <form method="POST" action="login.php">
-        <input type="text" placeholder="Username" name="login"/>
-        <input type="password" placeholder="Password" name="pass"/>
-        <input type="email" placeholder="Email" name="email"/>
-        <input type="submit" name="sub"/>
-    </form>
-
-    <form action="register.php">
-        <input type="submit", value="Register">
-    </form>
-</body>
+        <form action="register.php">
+            <input type="submit", value="Register">
+        </form>
+    </body>
+</html>
 
 <?php
 include("../footer.php");

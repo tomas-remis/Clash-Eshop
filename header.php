@@ -3,8 +3,16 @@ $is_in_verified = gettype(strpos($_SERVER["REQUEST_URI"], "unverified")) == "boo
 function add_header_elements(){
     GLOBAL $is_in_verified;
     if($is_in_verified){
-        echo "<table><tr><td><a href='home.php'>Home</a></td><td><a href='browse.php'>Browse cards</a></td><td><a href='orders.php'>My orders</a></td><td><a href='logout.php'>Log out</a></td></tr></table>";
+        return "<table>
+            <tr>
+                <td><a href='home.php'>Home</a></td>
+                <td><a href='browse.php'>Browse cards</a></td>
+                <td><a href='orders.php'>My orders</a></td>
+                <td><a href='logout.php'>Log out</a></td>
+            </tr>
+        </table>";
     }
+    return "";
 }
 
 session_set_cookie_params(7200,'/');
@@ -17,15 +25,15 @@ if(isset($_GET["sub"])){
 if(!isset($_SESSION["login"]) && $is_in_verified){
     header('Location: /clash/unverified/login.php');
 }
-?>
 
-<html>
-    <head>
-        <link rel="stylesheet" href="/clash/style.css", type="text/css">
-    </head>
-    <body>
-        <nav id="header">
-            <?php add_header_elements();?>
-        </nav>
-    </body>
-</html>
+function load_head(){
+    return '<link rel="stylesheet" href="/clash/style.css", type="text/css">';
+}
+
+function load_body(){
+    $data = '<nav id="header">
+        '.add_header_elements().'
+    </nav>';
+    return $data;
+}
+?>

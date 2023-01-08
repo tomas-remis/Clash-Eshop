@@ -56,11 +56,16 @@ function populate_table(){
 }
 ?>
 
-
-<body>
-    <h1 style="text-align:center;">Browse cards</h1>
-    <?php populate_table(); ?>
-</body>
+<html>
+    <head>
+        <?php echo load_head();?>
+    </head>
+    <body>
+        <?php echo load_body();?>
+        <h1 style="text-align:center;">Browse cards</h1>
+        <?php populate_table(); ?>
+    </body>
+</html>
 
 <?php
 include("../footer.php");

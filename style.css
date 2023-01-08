@@ -81,3 +81,102 @@ body{
 #page_nav *{
     display: inline;
 }
+
+#card_img{
+    height: 100%;
+    border: 5px solid black;
+    border-radius: 16px;
+    padding: 25px;
+}
+
+#card_info{
+    padding-top: 25px;
+    font-size: 2em;
+    position: relative;
+    height: 100%;
+    width: 50%;
+}
+
+#card_container{
+    margin: 50px auto;
+    width: 40%;
+    text-align: center;
+    height: 60%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+#card_description{
+    color: gray;
+}
+
+#card_form_container{
+    flex-direction: column;
+    display: flex;
+}
+
+#bottom_card_data{
+    display: flex;
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    -ms-transform: translateX(-50%);
+    transform: translateX(-50%);
+    width: 100%;
+    flex-direction: column-reverse;
+}
+
+.star{
+    width: 15%;
+    padding: 0 2.5%;
+}
+
+#rating{
+    position: relative;
+    margin-bottom: 16px;   
+}
+
+.star_overlay{
+    position: absolute;
+    top: 0;
+    height: max-content;
+}
+
+.star_flex_box{
+    display: flex;
+    justify-content: space-around;
+    width: 85%;
+    margin: auto;
+}
+
+#rating:has(.star_overlay:hover) #clip_star_overlay{
+    clip-path: inset(0);
+}
+
+#clip_star_overlay:has(#star0:hover){
+    clip-path: inset(0 80% 0 0) !important;
+}
+#clip_star_overlay:has(#star1:hover){
+    clip-path: inset(0 60% 0 0) !important;
+}
+#clip_star_overlay:has(#star2:hover){
+    clip-path: inset(0 40% 0 0) !important;
+}
+#clip_star_overlay:has(#star3:hover){
+    clip-path: inset(0 20% 0 0) !important;
+}
+#clip_star_overlay:has(#star4:hover){
+    clip-path: inset(0) !important;
+}
+
+.star_button{
+    width: 20%;
+    border: 0;
+    background: none;
+    padding: 0 2.5%;
+}
+
+.button_star{
+    width: 100%;
+}
