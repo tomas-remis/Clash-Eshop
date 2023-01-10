@@ -180,3 +180,27 @@ body{
 .button_star{
     width: 100%;
 }
+
+#cart img{
+    height: 50px;
+    background: blue;
+    border-radius: 50px;
+    border: 2px solid black;
+    padding: 15px;
+}
+
+#cart{
+    position: sticky;
+    left: 90%;
+    top: 90%;
+}
+
+#cart_data td{
+    text-align: center;
+}
+
+#cart_data{
+    margin: auto;
+    width: fit-content;
+    text-align: center;
+}
