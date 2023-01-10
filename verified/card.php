@@ -1,10 +1,15 @@
 <?php
+require("../header.php");
+require("../functions.php");
+
 if(!isset($_GET['id'])){
     header('Location: browse.php');
 }
 
-require("../header.php");
-require("../functions.php");
+if(isset($_POST['cart_sub'])){
+    $_SESSION['cart'][$_GET['id']] = $_POST['order_count'];
+    header('Location: browse.php');
+}
 
 function get_rating($con, $CAID){
     $sql = "SELECT * FROM card_quality WHERE card_id=".$CAID.";";
@@ -88,8 +93,8 @@ function populate_card_info()
                             </div>
                             <div>Available: ".$card["card_stock"]."x</div>
                             <form method='POST' action=".$card_url.">
-                                <input type='number' min='1' max='".$card["card_stock"]."'>
-                                <input type='submit' value='Add to cart' name='sub'>
+                                <input name='order_count' type='number' min='1' max='".$card["card_stock"]."' required>
+                                <input type='submit' value='Add to cart' name='cart_sub'>
                             </form>
                         </div>
                         <form id='rating' method='POST' action=".$card_url.">

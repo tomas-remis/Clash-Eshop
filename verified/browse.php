@@ -27,7 +27,7 @@ function populate_table(){
                     $card_table .= "<tr>";
                 }
                 $cur_cell += 1;
-                $card = "<td><div class='card_holder'><a href='card.php?id=".$row["CAID"]."'><img src='/clash/images/".$row["card_image"]."'><div class='name_holder'><h2>".$row["card_name"]."</h2></div></a></div></td>";
+                $card = "<td><div class='card_holder'><a href='card.php?id=".$row["CAID"]."'><img alt='Browse card' src='/clash/images/".$row["card_image"]."'><div class='name_holder'><h2>".$row["card_name"]."</h2></div></a></div></td>";
                 $card_table.=$card;
                 if($cur_cell == 4){
                     $card_table .= "</tr>";
