@@ -44,6 +44,50 @@ function get_card($con, $CAID){
     return $card;
 }
 
+function post_comment($con){
+    $sql = sprintf("INSERT INTO comments(contents, customer_id, card_id) VALUES(?, %d, %d);", $_SESSION["customerID"], $_GET["id"]);
+    $state = $con->prepare($sql);
+    $state->bind_param("s", $_POST["comment_text"]);
+    $state->execute();
+}
+
+function delete_comment($con){
+    $sql = "DELETE FROM comments WHERE COID=".$_POST["remove_sub"];
+    $con->query($sql);
+}
+
+function display_comments($con){
+    $sql = "SELECT * FROM comments WHERE card_id=".$_GET["id"].";";
+    $result = $con->query($sql);
+
+    $comment_table = "<table>";
+
+    while($row = $result->fetch_assoc()){
+        $author_sql = "SELECT * FROM customers WHERE CID=".$row["customer_id"].";";
+        $author_name = $con->query($author_sql)->fetch_assoc()["Login"];
+
+        $remove_button = "";
+        if($_SESSION["customerID"] == $row["customer_id"]){
+            $remove_button = "<form method='POST'><button type='submit' name='remove_sub' value='".$row["COID"]."'>Remove Comment</button></form>";
+        }
+        $comment_table .= "
+        <tr>
+            <td>
+                <div class='author_info'>
+                    <div class='author_name'>".$author_name."</div>
+                    <div class='post_time'>".$row["comment_timestamp"]."</div>".
+                    $remove_button."
+                </div>
+                <div class='comment_content'>".
+                    $row["contents"]."
+                </div>
+            </td>
+        </tr>";
+    }
+    $comment_table .= "</table>";   
+    return $comment_table;
+}
+
 function populate_card_info()
 {
     $con=connect("localhost", "root", "", "clash");
@@ -58,6 +102,15 @@ function populate_card_info()
     $rating_response = "";
     if(isset($_POST["rating_sub"])){
         $rating_response = add_rating($con, $_POST["rating_sub"]);
+    }
+
+    elseif(isset($_POST["remove_sub"])){
+        echo "a";
+        delete_comment($con);
+    }
+
+    elseif(isset($_POST["comment_sub"])){
+        post_comment($con);
     }
 
     $rating = get_rating($con, $card["CAID"]);
@@ -132,6 +185,15 @@ function populate_card_info()
                     </div>
                 </div>
             </div>
+            <div id='comments_container'>
+                <form method='POST'>
+                    <textarea rows='5' cols='60' placeholder='Add comment' name='comment_text' required></textarea>
+                    <br>
+                    <input type='submit' name='comment_sub' value='Post comment'>
+                </form>
+                <div id='comment_section'>".
+                    display_comments($con)."
+                </div>
         </body>";
 
     echo $data;
