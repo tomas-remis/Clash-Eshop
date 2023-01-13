@@ -135,7 +135,7 @@ function populate_card_info()
             ".load_body()."
             ".$rating_response."
             <div id='card_container'>
-                <img id='card_img' src='/clash/images/".$card["card_image"]."'>
+                <img id='card_img' src='../images/".$card["card_image"]."'>
                 <div id='card_info'>
                     <h1>".$card["card_name"]."</h1>
                     <div id='card_description'>".$card["card_description"]."</div>
@@ -151,32 +151,32 @@ function populate_card_info()
                             </form>
                         </div>
                         <form id='rating' method='POST' action=".$card_url.">
-                            <img class='star' style='visibility: hidden;' src='/clash/images/disabled_star.png'>
+                            <img class='star' style='visibility: hidden;' src='../images/disabled_star.png'>
                             <div class='star_overlay'>
                                 <div class='star_flex_box'>
-                                    <img class='star' src='/clash/images/disabled_star.png'>
-                                    <img class='star' src='/clash/images/disabled_star.png'>
-                                    <img class='star' src='/clash/images/disabled_star.png'>
-                                    <img class='star' src='/clash/images/disabled_star.png'>
-                                    <img class='star' src='/clash/images/disabled_star.png'>
+                                    <img class='star' src='../images/disabled_star.png'>
+                                    <img class='star' src='../images/disabled_star.png'>
+                                    <img class='star' src='../images/disabled_star.png'>
+                                    <img class='star' src='../images/disabled_star.png'>
+                                    <img class='star' src='../images/disabled_star.png'>
                                 </div>
                             </div>
                             <div class='star_overlay'> 
                                 <div class='star_flex_box' id='clip_star_overlay'>
                                     <button class='star_button' value='1' name='rating_sub' type='submit' id='star0'>
-                                    <img class='button_star' src='/clash/images/star.png'>
+                                    <img class='button_star' src='../images/star.png'>
                                     </button>
                                     <button class='star_button' value='2' name='rating_sub' type='submit' id='star1'>
-                                    <img class='button_star' src='/clash/images/star.png'>
+                                    <img class='button_star' src='../images/star.png'>
                                     </button>
                                     <button class='star_button' value='3' name='rating_sub' type='submit' id='star2'>
-                                    <img class='button_star' src='/clash/images/star.png'>
+                                    <img class='button_star' src='../images/star.png'>
                                     </button>
                                     <button class='star_button' value='4' name='rating_sub' type='submit' id='star3'>
-                                    <img class='button_star' src='/clash/images/star.png'>
+                                    <img class='button_star' src='../images/star.png'>
                                     </button>
                                     <button class='star_button' value='5' name='rating_sub' type='submit' id='star4'>
-                                    <img class='button_star' src='/clash/images/star.png'>
+                                    <img class='button_star' src='../images/star.png'>
                                     </button>
                                 </div>
                             </div>

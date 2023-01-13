@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 09, 2023 at 02:16 AM
--- Server version: 10.4.24-MariaDB
--- PHP Version: 8.1.6
+-- Generation Time: Jan 14, 2023 at 12:07 AM
+-- Server version: 10.4.27-MariaDB
+-- PHP Version: 8.1.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -27,23 +27,22 @@ SET time_zone = "+00:00";
 -- Table structure for table `cards`
 --
 
-DROP TABLE IF EXISTS `cards`;
 CREATE TABLE `cards` (
   `CAID` int(11) NOT NULL,
   `card_name` varchar(50) NOT NULL,
   `card_cost` int(11) NOT NULL,
-  `CardRarity` varchar(20) NOT NULL,
-  `CardType` varchar(20) NOT NULL,
+  `card_rarity` varchar(20) NOT NULL,
+  `card_type` varchar(20) NOT NULL,
   `card_stock` int(11) NOT NULL,
   `card_description` text NOT NULL,
   `card_image` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `cards`
 --
 
-INSERT INTO `cards` (`CAID`, `card_name`, `card_cost`, `CardRarity`, `CardType`, `card_stock`, `card_description`, `card_image`) VALUES
+INSERT INTO `cards` (`CAID`, `card_name`, `card_cost`, `card_rarity`, `card_type`, `card_stock`, `card_description`, `card_image`) VALUES
 (1, 'Skeletons', 1, 'Common', 'Troop', 2, '“Three fast, very weak melee fighters. Surround your enemies with this pile of bones!”', 'skeletons.png'),
 (2, 'Ice spirit', 1, 'Common', 'Troop', 2, '“Spawns one lively little Ice Spirit to freeze a group of enemies. Stay frosty.”', 'IceSpiritCard.png'),
 (3, 'Fire Spirit', 1, 'Common', 'Troop', 2, '“Spawns one lively little Ice Spirit to freeze a group of enemies. Stay frosty.”', 'FireSpiritsCard.png'),
@@ -60,12 +59,12 @@ INSERT INTO `cards` (`CAID`, `card_name`, `card_cost`, `CardRarity`, `CardType`,
 (14, 'Goblin Gang', 3, 'Common', 'Troop', 2, '“Spawns Six Goblins - three with knives, three with spears - at a discounted Elixir cost. It\'s like a Goblin Value Pack!”', 'GoblinsCard.png'),
 (15, 'Skeleton Barrel', 3, 'Common', 'Troop', 2, '“It\'s a Skeleton party in the sky, until all the balloons pop... then it\'s a Skeleton party on the ground!”', 'SkeletonBarrelCard.png'),
 (16, 'Firecracker', 3, 'Common', 'Troop', 2, '“Shoots a firework that explodes on impact, damaging the target and showering anything behind it with sparks. This is what happens when Archers get bored!”', 'FirecrackerCard.png'),
-(17, 'Cannon', 3, 'Common', 'Building', 2, '“Defensive building. Shoots cannonballs with deadly effect, but cannot target flying troops.”', 'CannonCard.png'),
+(17, 'Cannon', 3, 'Common', 'Tower', 2, '“Defensive building. Shoots cannonballs with deadly effect, but cannot target flying troops.”', 'CannonCard.png'),
 (18, 'Arrows', 3, 'Common', 'Spell', 2, '“Arrows pepper a large area, damaging all enemies hit. Reduced damage to Crown Towers.”', 'ArrowsCard.png'),
 (19, 'Royal Delivery', 3, 'Common', 'Troop', 2, '“No need to sign for this package! Dropped from the sky, it deals Area Damage to enemy Troops before delivering a Royal Recruit. The empty box is also handy for espionage.”', 'RoyalDeliveryCard.png'),
 (20, 'Skeleton Dragons', 4, 'Common', 'Troop', 2, '“This pair of skeletal scorchers deal Area Damage and fly above the Arena. They also play a mean rib cage xylophone duet.”', 'SkeletonDragonsCard.png'),
-(21, 'Mortar', 4, 'Common', 'Building', 2, '“Defensive building with a long range. Shoots big boulders that deal area damage, but cannot hit targets that get very close!”', 'MortarCard.png'),
-(22, 'Tesla', 4, 'Common', 'Building', 2, '“Defensive building. Whenever it\'s not zapping the enemy, the power of Electrickery is best kept grounded.”', 'TeslaCard.png'),
+(21, 'Mortar', 4, 'Common', 'Tower', 2, '“Defensive building with a long range. Shoots big boulders that deal area damage, but cannot hit targets that get very close!”', 'MortarCard.png'),
+(22, 'Tesla', 4, 'Common', 'Tower', 2, '“Defensive building. Whenever it\'s not zapping the enemy, the power of Electrickery is best kept grounded.”', 'TeslaCard.png'),
 (23, 'Barbarians', 5, 'Common', 'Troop', 2, '“A horde of melee attackers with mean mustaches and even meaner tempers.”', 'BarbariansCard.png'),
 (24, 'Minion Horde', 5, 'Common', 'Troop', 2, '“Six fast, unarmored flying attackers. Three\'s a crowd, six is a horde!”', 'MinionHordeCard.png'),
 (25, 'Rascals', 5, 'Common', 'Troop', 2, '“Spawns a mischievous trio of Rascals! The boy takes the lead, while the girls pelt enemies from behind... with slingshots full of Double Trouble Gum!”', 'RascalsCard.png'),
@@ -77,7 +76,7 @@ INSERT INTO `cards` (`CAID`, `card_name`, `card_cost`, `CardRarity`, `CardType`,
 (32, 'Mega Minion', 3, 'Rare', 'Troop', 2, '“Flying, armored and powerful. What could be its weakness?! Cupcakes.”', ''),
 (33, 'Dart Goblin', 3, 'Rare', 'Troop', 2, '“Runs fast, shoots far and chews gum. How does he blow darts with a mouth full of Double Trouble gum? Years of didgeridoo lessons.”', ''),
 (34, 'Elixir Golem', 3, 'Rare', 'Troop', 2, '“Splits into two Elixir Golemites when destroyed, which split into two sentient Blobs when defeated. Each part of the Elixir Golem gives your opponent some Elixir when destroyed!”', ''),
-(35, 'Tombstone', 3, 'Rare', 'Building', 2, '“Building that periodically spawns Skeletons to fight the enemy... and when destroyed, spawns 4 more Skeletons! Creepy.”', ''),
+(35, 'Tombstone', 3, 'Rare', 'Tower', 2, '“Building that periodically spawns Skeletons to fight the enemy... and when destroyed, spawns 4 more Skeletons! Creepy.”', ''),
 (36, 'Earthquake', 3, 'Rare', 'Spell', 2, '“Deals Damage per second to Troops and Crown Towers. Deals huge Building Damage! Does not affect flying units (it is an EARTHquake, after all).”', ''),
 (37, 'Valkyrie', 4, 'Rare', 'Troop', 2, '“Tough melee fighter, deals area damage around her. Swarm or horde, no problem! She can take them all out with a few spins.”', ''),
 (38, 'Musketeer', 4, 'Rare', 'Troop', 2, '“Don\'t be fooled by her delicately coiffed hair, the Musketeer is a mean shot with her trusty boomstick.”', ''),
@@ -87,17 +86,17 @@ INSERT INTO `cards` (`CAID`, `card_name`, `card_cost`, `CardRarity`, `CardType`,
 (42, 'Zappies', 4, 'Rare', 'Troop', 2, '“Spawns a pack of miniature Zap machines. Who controls them...? Only the Master Builder knows.”', ''),
 (43, 'Flying Machine', 4, 'Rare', 'Troop', 2, '“The Master Builder has sent his first contraption to the Arena! It\'s a fast and fun flying machine, but fragile!”', ''),
 (44, 'Battle Healer', 4, 'Rare', 'Troop', 2, '“With each attack, she unleashes a powerful healing aura that restores Hitpoints to herself and friendly Troops. When she isn\'t attacking, she passively heals herself!”', ''),
-(45, 'Bomb Tower', 4, 'Rare', 'Building', 2, '“Defensive building that houses a Bomber. Deals area damage to anything dumb enough to stand near it.”', ''),
-(46, 'Furnace', 4, 'Rare', 'Building', 2, '“The Furnace spawns one Fire Spirit at a time. It also makes great brick-oven pancakes.”', ''),
-(47, 'Goblin Cage', 4, 'Rare', 'Building', 2, '“When the Goblin Cage is destroyed, a Goblin Brawler is unleashed into the Arena! Goblin Brawler always skips leg day.”', ''),
+(45, 'Bomb Tower', 4, 'Rare', 'Tower', 2, '“Defensive building that houses a Bomber. Deals area damage to anything dumb enough to stand near it.”', ''),
+(46, 'Furnace', 4, 'Rare', 'Tower', 2, '“The Furnace spawns one Fire Spirit at a time. It also makes great brick-oven pancakes.”', ''),
+(47, 'Goblin Cage', 4, 'Rare', 'Tower', 2, '“When the Goblin Cage is destroyed, a Goblin Brawler is unleashed into the Arena! Goblin Brawler always skips leg day.”', ''),
 (48, 'Fireball', 4, 'Rare', 'Spell', 2, '“Annnnnd... Fireball. Incinerates a small area, dealing high damage. Reduced damage to Crown Towers.”', ''),
 (49, 'Giant', 5, 'Rare', 'Troop', 2, '“Slow but durable, only attacks buildings. A real one-man wrecking crew!”', ''),
 (50, 'Wizard', 5, 'Rare', 'Troop', 2, '“The most awesome man to ever set foot in the Arena, the Wizard will blow you away with his handsomeness... and/or fireballs.”', ''),
 (51, 'Royal Hogs', 5, 'Rare', 'Troop', 2, '“The King’s personal pets are loose! They love to chomp on apples and towers alike - who let the hogs out?!”', ''),
-(52, 'Goblin Hut', 5, 'Rare', 'Building', 2, '“Building that spawns Spear Goblins. Don\'t look inside... You don\'t want to see how they\'re made.”', ''),
-(53, 'Inferno Tower', 5, 'Rare', 'Building', 2, '“Defensive building, roasts targets for damage that increases over time. Burns through even the biggest and toughest enemies!”', ''),
-(54, 'Barbarian Hut', 6, 'Rare', 'Building', 2, '“Building that periodically spawns Barbarians to fight the enemy. Time to make the Barbarians!”', ''),
-(55, 'Elixir Collector', 6, 'Rare', 'Building', 2, '“You gotta spend Elixir to make Elixir! This building makes 8 Elixir over its Lifetime. Does not appear in your starting hand.”', ''),
+(52, 'Goblin Hut', 5, 'Rare', 'Tower', 2, '“Building that spawns Spear Goblins. Don\'t look inside... You don\'t want to see how they\'re made.”', ''),
+(53, 'Inferno Tower', 5, 'Rare', 'Tower', 2, '“Defensive building, roasts targets for damage that increases over time. Burns through even the biggest and toughest enemies!”', ''),
+(54, 'Barbarian Hut', 6, 'Rare', 'Tower', 2, '“Building that periodically spawns Barbarians to fight the enemy. Time to make the Barbarians!”', ''),
+(55, 'Elixir Collector', 6, 'Rare', 'Tower', 2, '“You gotta spend Elixir to make Elixir! This building makes 8 Elixir over its Lifetime. Does not appear in your starting hand.”', ''),
 (56, 'Rocket', 6, 'Rare', 'Spell', 2, '“Deals high damage to a small area. Looks really awesome doing it. Reduced damage to Crown Towers.”', ''),
 (57, 'Three Musketeers', 9, 'Rare', 'Troop', 2, '“Trio of powerful, independent markswomen, fighting for justice and honor. Disrespecting them would not be just a mistake, it would be a cardinal sin!”', ''),
 (58, 'Wall Breakers', 2, 'Epic', 'Troop', 2, '“A daring duo of dangerous dive bombers. Nothing warms a Wall Breaker\'s cold and undead heart like blowing up buildings.”', ''),
@@ -111,7 +110,7 @@ INSERT INTO `cards` (`CAID`, `card_name`, `card_cost`, `CardRarity`, `CardType`,
 (66, 'Baby Dragon', 4, 'Epic', 'Troop', 2, '“Burps fireballs from the sky that deal area damage. Baby dragons hatch cute, hungry and ready for a barbeque.”', ''),
 (67, 'Dark Prince', 4, 'Epic', 'Troop', 2, '“The Dark Prince deals area damage and lets his spiked club do the talking for him - because when he does talk, it sounds like he has a bucket on his head.”', ''),
 (68, 'Hunter', 4, 'Epic', 'Troop', 2, '“He deals BIG damage up close - not so much at range. What he lacks in accuracy, he makes up for with his impressively bushy eyebrows.”', ''),
-(69, 'Goblin Drill', 4, 'Epic', 'Building', 2, '“Building capable of burrowing underground and appearing anywhere in the Arena. Spawns Goblins one at a time until destroyed. Then spawns a few more, to make sure everything nearby has been properly stabbed.”', ''),
+(69, 'Goblin Drill', 4, 'Epic', 'Tower', 2, '“Building capable of burrowing underground and appearing anywhere in the Arena. Spawns Goblins one at a time until destroyed. Then spawns a few more, to make sure everything nearby has been properly stabbed.”', ''),
 (70, 'Poison', 4, 'Epic', 'Spell', 2, '“Covers the area in a deadly toxin, damaging enemy troops and buildings over time. Yet somehow leaves the grass green and healthy. Go figure! Reduced damage to Crown Towers.”', ''),
 (71, 'Baloon', 5, 'Epic', 'Troop', 2, '“As pretty as they are, you won\'t want a parade of THESE balloons showing up on the horizon. Drops powerful bombs and when shot down, crashes dealing area damage.”', ''),
 (72, 'Witch', 5, 'Epic', 'Troop', 2, '“Summons Skeletons, shoots destructo beams, has glowing pink eyes that unfortunately don\'t shoot lasers.”', ''),
@@ -127,7 +126,7 @@ INSERT INTO `cards` (`CAID`, `card_name`, `card_cost`, `CardRarity`, `CardType`,
 (82, 'Electro Giant', 7, 'Epic', 'Troop', 2, '“He channels electricity through his Zap Pack, a unique device that stuns and damages any troop attacking him within its range. Don\'t tell him that his finger guns aren\'t real! He\'ll zap you.”', ''),
 (83, 'Golem', 8, 'Epic', 'Troop', 2, '“Slow but durable, only attacks buildings. When destroyed, explosively splits into two Golemites and deals area damage!”', ''),
 (84, 'Freeze', 4, 'Epic', 'Spell', 2, '“Freezes and damages enemy troops and buildings, making them unable to move or attack. Everybody chill. Reduced damage to Crown Towers.”\r\n', ''),
-(85, 'The Log', 2, 'Legendary', 'Spell', 2, '“A spilt bottle of Rage turned an innocent tree trunk into \"The Log\". Now, it seeks revenge by crushing anything in its path! Reduced damage to Crown Towers.”', ''),
+(85, 'The Log', 2, 'Legendary', 'Spell', 1, '“A spilt bottle of Rage turned an innocent tree trunk into \"The Log\". Now, it seeks revenge by crushing anything in its path! Reduced damage to Crown Towers.”', ''),
 (86, 'Princess', 3, 'Legendary', 'Troop', 2, '“This stunning Princess shoots flaming arrows from long range. If you\'re feeling warm feelings towards her, it\'s probably because you\'re on fire.”', ''),
 (87, 'Ice Wizard', 3, 'Legendary', 'Troop', 2, '“This chill caster throws ice shards that slow down enemies\' movement and attack speed. Despite being freezing cold, he has a handlebar mustache that\'s too hot for TV.”', ''),
 (88, 'Miner', 3, 'Legendary', 'Troop', 2, '“The Miner can burrow his way underground and appear anywhere in the Arena. It\'s not magic, it\'s a shovel. A shovel that deals reduced damage to Crown Towers.”', ''),
@@ -155,15 +154,36 @@ INSERT INTO `cards` (`CAID`, `card_name`, `card_cost`, `CardRarity`, `CardType`,
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `card_indexes`
+--
+
+CREATE TABLE `card_indexes` (
+  `index` int(11) NOT NULL,
+  `rarity_text` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `card_indexes`
+--
+
+INSERT INTO `card_indexes` (`index`, `rarity_text`) VALUES
+(0, 'Common'),
+(1, 'Rare'),
+(2, 'Epic'),
+(3, 'Legendary'),
+(4, 'Champion');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `card_quality`
 --
 
-DROP TABLE IF EXISTS `card_quality`;
 CREATE TABLE `card_quality` (
   `customer_id` int(11) NOT NULL,
   `card_id` int(11) NOT NULL,
   `quality` enum('0','1','2','3','4','5') NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -171,24 +191,13 @@ CREATE TABLE `card_quality` (
 -- Table structure for table `comments`
 --
 
-DROP TABLE IF EXISTS `comments`;
 CREATE TABLE `comments` (
   `COID` int(11) NOT NULL,
-  `contents` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `comment_list`
---
-
-DROP TABLE IF EXISTS `comment_list`;
-CREATE TABLE `comment_list` (
-  `comment_id` int(11) NOT NULL,
+  `contents` text NOT NULL,
   `card_id` int(11) NOT NULL,
-  `customer_id` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  `customer_id` int(11) NOT NULL,
+  `comment_timestamp` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -196,13 +205,12 @@ CREATE TABLE `comment_list` (
 -- Table structure for table `customers`
 --
 
-DROP TABLE IF EXISTS `customers`;
 CREATE TABLE `customers` (
   `CID` int(11) NOT NULL,
   `Login` varchar(50) NOT NULL,
   `Password` varchar(100) NOT NULL,
   `Email` varchar(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `customers`
@@ -219,12 +227,19 @@ INSERT INTO `customers` (`CID`, `Login`, `Password`, `Email`) VALUES
 -- Table structure for table `orders`
 --
 
-DROP TABLE IF EXISTS `orders`;
 CREATE TABLE `orders` (
   `OID` int(11) NOT NULL,
+  `customer_id` int(11) NOT NULL,
   `timestamp` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
-  `finalized_purchase` tinyint(1) NOT NULL DEFAULT 0
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  `price` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `orders`
+--
+
+INSERT INTO `orders` (`OID`, `customer_id`, `timestamp`, `price`) VALUES
+(17, 2, '2023-01-13 22:48:22', 2);
 
 -- --------------------------------------------------------
 
@@ -232,13 +247,18 @@ CREATE TABLE `orders` (
 -- Table structure for table `order_list`
 --
 
-DROP TABLE IF EXISTS `order_list`;
 CREATE TABLE `order_list` (
   `order_id` int(11) NOT NULL,
   `card_id` int(11) NOT NULL,
-  `customer_id` int(11) NOT NULL,
   `amount` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `order_list`
+--
+
+INSERT INTO `order_list` (`order_id`, `card_id`, `amount`) VALUES
+(17, 85, 1);
 
 --
 -- Indexes for dumped tables
@@ -251,6 +271,12 @@ ALTER TABLE `cards`
   ADD PRIMARY KEY (`CAID`);
 
 --
+-- Indexes for table `card_indexes`
+--
+ALTER TABLE `card_indexes`
+  ADD PRIMARY KEY (`index`);
+
+--
 -- Indexes for table `card_quality`
 --
 ALTER TABLE `card_quality`
@@ -261,13 +287,7 @@ ALTER TABLE `card_quality`
 -- Indexes for table `comments`
 --
 ALTER TABLE `comments`
-  ADD PRIMARY KEY (`COID`);
-
---
--- Indexes for table `comment_list`
---
-ALTER TABLE `comment_list`
-  ADD PRIMARY KEY (`comment_id`,`card_id`,`customer_id`),
+  ADD PRIMARY KEY (`COID`),
   ADD KEY `CustomerComment` (`customer_id`),
   ADD KEY `CardComment` (`card_id`);
 
@@ -283,14 +303,14 @@ ALTER TABLE `customers`
 -- Indexes for table `orders`
 --
 ALTER TABLE `orders`
-  ADD PRIMARY KEY (`OID`);
+  ADD PRIMARY KEY (`OID`),
+  ADD KEY `CustomerOrder` (`customer_id`);
 
 --
 -- Indexes for table `order_list`
 --
 ALTER TABLE `order_list`
-  ADD PRIMARY KEY (`order_id`,`card_id`,`customer_id`),
-  ADD KEY `CustomerOrder` (`customer_id`),
+  ADD PRIMARY KEY (`order_id`,`card_id`) USING BTREE,
   ADD KEY `CardOrder` (`card_id`);
 
 --
@@ -307,7 +327,7 @@ ALTER TABLE `cards`
 -- AUTO_INCREMENT for table `comments`
 --
 ALTER TABLE `comments`
-  MODIFY `COID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `COID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `customers`
@@ -319,7 +339,7 @@ ALTER TABLE `customers`
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `OID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `OID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- Constraints for dumped tables
@@ -333,19 +353,23 @@ ALTER TABLE `card_quality`
   ADD CONSTRAINT `CustomerQuality` FOREIGN KEY (`customer_id`) REFERENCES `customers` (`CID`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `comment_list`
+-- Constraints for table `comments`
 --
-ALTER TABLE `comment_list`
+ALTER TABLE `comments`
   ADD CONSTRAINT `CardComment` FOREIGN KEY (`card_id`) REFERENCES `cards` (`CAID`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `Comment` FOREIGN KEY (`comment_id`) REFERENCES `comments` (`COID`),
   ADD CONSTRAINT `CustomerComment` FOREIGN KEY (`customer_id`) REFERENCES `customers` (`CID`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `orders`
+--
+ALTER TABLE `orders`
+  ADD CONSTRAINT `CustomerOrder` FOREIGN KEY (`customer_id`) REFERENCES `customers` (`CID`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `order_list`
 --
 ALTER TABLE `order_list`
   ADD CONSTRAINT `CardOrder` FOREIGN KEY (`card_id`) REFERENCES `cards` (`CAID`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `CustomerOrder` FOREIGN KEY (`customer_id`) REFERENCES `customers` (`CID`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `Order` FOREIGN KEY (`order_id`) REFERENCES `orders` (`OID`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 

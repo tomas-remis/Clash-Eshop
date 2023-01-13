@@ -18,13 +18,14 @@ if(isset($_POST["sub"])){
             $row=$result->fetch_assoc();
             $_SESSION["login"] = $row["Login"];
             $_SESSION["customerID"] = $row["CID"];
-            header('Location: ../verified/home.php');
+            header('Location: ../verified/browse.php');
         }
         else{
             echo "Wrong credentials";
         }
     }
 }
+
 ?>
 <html>
     <head>

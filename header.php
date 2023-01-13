@@ -6,17 +6,19 @@ function add_header_elements(){
     if($is_in_verified){
         if(!isset($_SESSION['cart'])){
             $_SESSION['cart'] = array();
+            $_SESSION["filter_options"] = array("sorting" => array("quantity", "DESC"), "filters" => array("rarities" => array(), "card_types" => array()));
         }
         return  "<nav id='header'><table>
             <tr>
-                <td><a href='home.php'>Home</a></td>
                 <td><a href='browse.php'>Browse cards</a></td>
+                <td><a href='filters.php'>Filter settings</a></td>
                 <td><a href='orders.php'>My orders</a></td>
                 <td><a href='logout.php'>Log out</a></td>
+                <td><a href='reset.php'>Reset</a></td>
             </tr>
         </table>
         </nav>
-        <a id='cart' href='cart.php'><img alt='cart' src='/clash/images/cart.png'></a>";
+        <a id='cart' href='cart.php'><img alt='cart' src='../images/cart.png'></a>";
     }
     return "<nav id='header'></nav>";
 }
@@ -29,11 +31,11 @@ if(isset($_GET["sub"])){
 }
 
 if(!isset($_SESSION["login"]) && $is_in_verified){
-    header('Location: /clash/unverified/login.php');
+    header('Location: ../unverified/login.php');
 }
 
 function load_head(){
-    return '<link rel="stylesheet" href="/clash/style.css", type="text/css">';
+    return '<link rel="stylesheet" href="../style.css", type="text/css">';
 }
 
 function load_body(){

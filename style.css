@@ -27,8 +27,31 @@ body{
     text-align: center;
     margin: auto;
     width: fit-content;
-    background-color: blue;
     margin-bottom: 20px;
+}
+
+.card_holder a{
+    color: black;
+}
+
+.Common{
+    background-color: #888888;
+}
+
+.Rare{
+    background-color: #ffa31a;
+}
+
+.Epic{
+    background-color: #b300b3;
+}
+
+.Legendary{
+    background-color: #33cccc;
+}
+
+.Champion{
+    background-color: #ffe200;
 }
 
 .card_holder img{
@@ -44,6 +67,7 @@ body{
     border-bottom-left-radius: 10px;
     border-bottom-right-radius: 10px;
     background-color: white;
+    z-index: 0;
 }
 
 .name_holder h2{
@@ -190,6 +214,7 @@ body{
 }
 
 #cart{
+    z-index: 1;
     position: sticky;
     left: 90%;
     top: 90%;
@@ -202,5 +227,10 @@ body{
 #cart_data{
     margin: auto;
     width: fit-content;
+    text-align: center;
+}
+
+#orders_table{
+    margin: auto;
     text-align: center;
 }
