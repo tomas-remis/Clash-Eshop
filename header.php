@@ -8,19 +8,33 @@ function add_header_elements(){
             $_SESSION['cart'] = array();
             $_SESSION["filter_options"] = array("sorting" => array("quantity", "DESC"), "filters" => array("rarities" => array(), "card_types" => array()));
         }
+
+        if(sizeof($_SESSION["cart"]) == 0){
+            $cart_img = "../images/cart_empty.png";
+        }
+        else{
+            $cart_img = "../images/cart_full.png";
+        }
+
+        if(gettype(strpos($_SERVER["REQUEST_URI"], "cart.php")) == "boolean"){
+            $cart = "<a id='cart' href='cart.php'><img alt='cart' src='".$cart_img."'></a>";
+        }
+        else{
+            $cart = "";
+        }
+
         return  "<nav id='header'><table>
             <tr>
                 <td><a href='browse.php'>Browse cards</a></td>
                 <td><a href='filters.php'>Filter settings</a></td>
                 <td><a href='orders.php'>My orders</a></td>
                 <td><a href='logout.php'>Log out</a></td>
-                <td><a href='reset.php'>Reset</a></td>
             </tr>
         </table>
         </nav>
-        <a id='cart' href='cart.php'><img alt='cart' src='../images/cart.png'></a>";
+        ".$cart;
     }
-    return "<nav id='header'></nav>";
+    return "";
 }
 
 session_set_cookie_params(7200,'/');

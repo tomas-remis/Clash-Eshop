@@ -158,12 +158,14 @@ a{
 }
 
 #card_img{
-    height: 100%;
+    position: absolute;
+    width: 20%;
     border: 5px solid black;
     border-radius: 16px;
     padding: 25px;
-    position: relative;
-    left: 170px;
+    left: 50%;
+    -ms-transform: translateX(-50%);
+    transform: translateX(-50%);
 }
 
 #card_info{
@@ -171,29 +173,26 @@ a{
     font-size: 2em;
     position: relative;
     height: 100%;
-    width: 50%;
-    text-align: right;
-    top: -45%;
-    left: -300px;
+    width: 50vw;
+    text-align: center;
 }
 
 
 #card_container{
     margin: 50px auto;
-    width: 40%;
     text-align: center;
-    height: 60%;
     display: flex;
     justify-content: space-evenly;
-    align-items: center;
+    flex-direction: column;
 }
 
 #card_description{
     color: gray;
-    position: relative;
-    left: 500px;
-    width: 500px;
-    text-align: left;
+    position: absolute;
+    text-align: right;
+    height: fit-content;
+    width: 15%;
+    right: 65%;
 }
 
 #card_form_container{
@@ -201,16 +200,23 @@ a{
     display: flex;
 }
 
+#card_container div{
+    font-size: 1.2em;
+}
+
 #bottom_card_data{
-    display: flex;
+    display: inline;
     position: absolute;
-    bottom: 0;
-    position: relative;
-    top: -400px;
-    left: -500px;
-    width: 100%;
+    left: 65%;
+    width: 20%;
     flex-direction: column-reverse;
 }
+
+#card_desc_container{
+    display: flex;
+    align-items: center;
+}
+
 
 .star{
     width: 15%;
@@ -225,13 +231,15 @@ a{
 .star_overlay{
     position: absolute;
     top: 0;
-    height: max-content;
+    width: 100%;
+    transform: translateX(-50%);
+    left: 50%;
 }
 
 .star_flex_box{
     display: flex;
     justify-content: space-around;
-    width: 85%;
+    width: 100%;
     margin: auto;
 }
 
@@ -267,11 +275,7 @@ a{
 }
 
 #cart img{
-    height: 50px;
-    background: blue;
-    border-radius: 50px;
-    border: 2px solid black;
-    padding: 15px;
+    height: 10%;
 }
 
 #cart{
@@ -298,4 +302,38 @@ a{
 
 #orders_table img{
     height: 5em;
+}
+
+.comment{
+    border: 1px solid black;
+    background-color: white;
+    color: black;
+    width: 100%;
+    padding: 20px;
+    border-radius: 20px;
+}
+
+.author_info *{
+    display: inline-block;
+    position: relative;
+}
+
+#comment_table{
+    margin: 50px auto;
+    width: 50%;
+}
+
+.remove_comment{
+    float: right;
+    margin: 0.5em 10px;
+}
+
+.post_time{
+    color: gray;
+    font-size: 0.8em;
+    margin-left: 20px;
+}
+
+html{
+    overflow-x: hidden;
 }

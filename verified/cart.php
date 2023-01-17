@@ -40,7 +40,7 @@ function populate_cart(){
         $price += $row["card_cost"] * $amount;
         $cart_data .= "<tr><td>
             <form method='POST'>
-                <img src='../images/".$row['card_image']."'><p>Amount: ".$amount."x</p><br>
+                <img alt='".$row["card_name"]."' src='../images/".$row['card_image']."'><p>Amount: ".$amount."x</p><br>
                 <p>Price: ".$row["card_cost"] * $amount."</p>
                 <button type='submit' value='".$card_id."' name='remove'>Remove</button>
             </form>

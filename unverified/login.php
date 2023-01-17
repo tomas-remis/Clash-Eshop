@@ -38,7 +38,7 @@ if(isset($_POST["sub"])){
             <input type="text" placeholder="Username" name="login"/>
             <input type="password" placeholder="Password" name="pass"/>
             <input type="email" placeholder="Email" name="email"/>
-            <input type="submit" name="sub"/>
+            <input type="submit" name="sub" value="Log in" />
         </form>
 
         <form action="register.php">

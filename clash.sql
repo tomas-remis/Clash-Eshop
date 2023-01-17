@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 15, 2023 at 02:37 PM
--- Server version: 10.4.27-MariaDB
--- PHP Version: 8.2.0
+-- Generation Time: Jan 17, 2023 at 12:34 PM
+-- Server version: 10.4.24-MariaDB
+-- PHP Version: 8.1.6
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -36,7 +36,7 @@ CREATE TABLE `cards` (
   `card_stock` int(11) NOT NULL,
   `card_description` text NOT NULL,
   `card_image` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `cards`
@@ -51,11 +51,11 @@ INSERT INTO `cards` (`CAID`, `card_name`, `card_cost`, `card_rarity`, `card_type
 (6, 'Bomber', 2, 'Common', 'Troop', 2, '“Small, lightly protected skeleton who throws bombs. Deals area damage that can wipe out a swarm of enemies.”', 'BomberCard.png'),
 (7, 'Spear Goblins', 2, 'Common', 'Troop', 2, '“Three unarmored ranged attackers. Who the heck taught these guys to throw spears!? Who thought that was a good idea?!”', 'SpearGoblinsCard.png'),
 (8, 'Bats', 2, 'Common', 'Troop', 2, '“Spawns a handful of tiny flying creatures. Think of them as sweet, purple... balls of DESTRUCTION!”', 'BatsCard.png'),
-(9, 'Zap', 2, 'Common', 'Spell', 2, '“Zaps enemies, briefly stunning them and dealing damage inside a small radius. Reduced damage to Crown Towers.”', 'ZapCard.png'),
+(9, 'Zap', 2, 'Common', 'Spell', 1, '“Zaps enemies, briefly stunning them and dealing damage inside a small radius. Reduced damage to Crown Towers.”', 'ZapCard.png'),
 (10, 'Giant Snowball', 2, 'Common', 'Spell', 2, '“It’s HUGE! Once it began rolling down Frozen Peak, there was no stopping it. Enemies hit are knocked back and slowed down. Reduced damage to Crown Towers.”', 'GiantSnowballCard.png'),
 (11, 'Knight', 3, 'Common', 'Troop', 2, '“A tough melee fighter. The Barbarian\'s handsome, cultured cousin. Rumor has it that he was knighted based on the sheer awesomeness of his mustache alone.”', 'KnightCard.png'),
 (12, 'Archers', 3, 'Common', 'Troop', 2, '“A pair of lightly armored ranged attackers. They\'ll help you take down ground and air units, but you\'re on your own with hair coloring advice.”', 'ArchersCard.png'),
-(13, 'Minions', 3, 'Common', 'Troop', 2, '“Three fast, unarmored flying attackers. Roses are red, minions are blue, they can fly, and will crush you!”', 'MinionsCard.png'),
+(13, 'Minions', 3, 'Common', 'Troop', 1, '“Three fast, unarmored flying attackers. Roses are red, minions are blue, they can fly, and will crush you!”', 'MinionsCard.png'),
 (14, 'Goblin Gang', 3, 'Common', 'Troop', 2, '“Spawns Six Goblins - three with knives, three with spears - at a discounted Elixir cost. It\'s like a Goblin Value Pack!”', 'GoblinsCard.png'),
 (15, 'Skeleton Barrel', 3, 'Common', 'Troop', 2, '“It\'s a Skeleton party in the sky, until all the balloons pop... then it\'s a Skeleton party on the ground!”', 'SkeletonBarrelCard.png'),
 (16, 'Firecracker', 3, 'Common', 'Troop', 2, '“Shoots a firework that explodes on impact, damaging the target and showering anything behind it with sparks. This is what happens when Archers get bored!”', 'FirecrackerCard.png'),
@@ -68,7 +68,7 @@ INSERT INTO `cards` (`CAID`, `card_name`, `card_cost`, `card_rarity`, `card_type
 (23, 'Barbarians', 5, 'Common', 'Troop', 2, '“A horde of melee attackers with mean mustaches and even meaner tempers.”', 'BarbariansCard.png'),
 (24, 'Minion Horde', 5, 'Common', 'Troop', 2, '“Six fast, unarmored flying attackers. Three\'s a crowd, six is a horde!”', 'MinionHordeCard.png'),
 (25, 'Rascals', 5, 'Common', 'Troop', 2, '“Spawns a mischievous trio of Rascals! The boy takes the lead, while the girls pelt enemies from behind... with slingshots full of Double Trouble Gum!”', 'RascalsCard.png'),
-(26, 'Royal Giant', 6, 'Common', 'Troop', 2, '“Destroying enemy buildings with his massive cannon is his job; making a raggedy blond beard look good is his passion.”', 'RoyalGiantCard.png'),
+(26, 'Royal Giant', 6, 'Common', 'Troop', 0, '“Destroying enemy buildings with his massive cannon is his job; making a raggedy blond beard look good is his passion.”', 'RoyalGiantCard.png'),
 (27, 'Elite Barbarians', 6, 'Common', 'Troop', 2, '“Spawns a pair of leveled up Barbarians. They\'re like regular Barbarians, only harder, better, faster and stronger.”', 'EliteBarbariansCard.png'),
 (28, 'Royal Recruits', 6, 'Common', 'Troop', 2, '“Deploys a line of recruits armed with spears, shields and wooden buckets. They dream of ponies and one day wearing metal buckets.”', 'RoyalRecruitsCard.png'),
 (30, 'Heal Spirit', 1, 'Rare', 'Troop', 2, '“A mischevious Spirit that leaps at enemies, dealing Damage and leaving behind a powerful healing effect that restores Hitpoints to friendly Troops!”', 'HealSpiritCard.png'),
@@ -126,7 +126,7 @@ INSERT INTO `cards` (`CAID`, `card_name`, `card_cost`, `card_rarity`, `card_type
 (82, 'Electro Giant', 7, 'Epic', 'Troop', 2, '“He channels electricity through his Zap Pack, a unique device that stuns and damages any troop attacking him within its range. Don\'t tell him that his finger guns aren\'t real! He\'ll zap you.”', 'ElectroGiantCard.png'),
 (83, 'Golem', 8, 'Epic', 'Troop', 2, '“Slow but durable, only attacks buildings. When destroyed, explosively splits into two Golemites and deals area damage!”', 'GolemCard.png'),
 (84, 'Freeze', 4, 'Epic', 'Spell', 2, '“Freezes and damages enemy troops and buildings, making them unable to move or attack. Everybody chill. Reduced damage to Crown Towers.”\r\n', 'FreezeCard.png'),
-(85, 'The Log', 2, 'Legendary', 'Spell', 1, '“A spilt bottle of Rage turned an innocent tree trunk into \"The Log\". Now, it seeks revenge by crushing anything in its path! Reduced damage to Crown Towers.”', 'TheLogCard.png'),
+(85, 'The Log', 2, 'Legendary', 'Spell', 2, '“A spilt bottle of Rage turned an innocent tree trunk into \"The Log\". Now, it seeks revenge by crushing anything in its path! Reduced damage to Crown Towers.”', 'TheLogCard.png'),
 (86, 'Princess', 3, 'Legendary', 'Troop', 2, '“This stunning Princess shoots flaming arrows from long range. If you\'re feeling warm feelings towards her, it\'s probably because you\'re on fire.”', 'PrincessCard.png'),
 (87, 'Ice Wizard', 3, 'Legendary', 'Troop', 2, '“This chill caster throws ice shards that slow down enemies\' movement and attack speed. Despite being freezing cold, he has a handlebar mustache that\'s too hot for TV.”', 'IceWizardCard.png'),
 (88, 'Miner', 3, 'Legendary', 'Troop', 2, '“The Miner can burrow his way underground and appear anywhere in the Arena. It\'s not magic, it\'s a shovel. A shovel that deals reduced damage to Crown Towers.”', 'MinerCard.png'),
@@ -160,7 +160,7 @@ INSERT INTO `cards` (`CAID`, `card_name`, `card_cost`, `card_rarity`, `card_type
 CREATE TABLE `card_indexes` (
   `index` int(11) NOT NULL,
   `rarity_text` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `card_indexes`
@@ -182,8 +182,17 @@ INSERT INTO `card_indexes` (`index`, `rarity_text`) VALUES
 CREATE TABLE `card_quality` (
   `customer_id` int(11) NOT NULL,
   `card_id` int(11) NOT NULL,
-  `quality` enum('0','1','2','3','4','5') NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+  `quality` int(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `card_quality`
+--
+
+INSERT INTO `card_quality` (`customer_id`, `card_id`, `quality`) VALUES
+(2, 22, 2),
+(4, 22, 5),
+(4, 85, 2);
 
 -- --------------------------------------------------------
 
@@ -197,7 +206,25 @@ CREATE TABLE `comments` (
   `card_id` int(11) NOT NULL,
   `customer_id` int(11) NOT NULL,
   `comment_timestamp` timestamp NOT NULL DEFAULT current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `comments`
+--
+
+INSERT INTO `comments` (`COID`, `contents`, `card_id`, `customer_id`, `comment_timestamp`) VALUES
+(2, 'ferfesrferf', 51, 2, '2023-01-17 08:55:54'),
+(3, 'ferfesrferf', 51, 2, '2023-01-17 08:56:58'),
+(4, 'ferfesrferf', 51, 2, '2023-01-17 08:57:17'),
+(5, 'ferfesrferf', 51, 2, '2023-01-17 09:01:13'),
+(6, 'ferfesrferf', 51, 2, '2023-01-17 09:14:02'),
+(7, 'ferfesrferf', 51, 2, '2023-01-17 09:15:52'),
+(8, 'ferfesrferf', 51, 2, '2023-01-17 09:16:05'),
+(9, 'ferfesrferf', 51, 2, '2023-01-17 09:16:39'),
+(10, 'ferfesrferf', 51, 2, '2023-01-17 09:16:42'),
+(11, 'srfredfer', 22, 2, '2023-01-17 10:27:45'),
+(12, 'srfredfer', 22, 2, '2023-01-17 10:34:28'),
+(13, 'dasda', 22, 4, '2023-01-17 10:43:39');
 
 -- --------------------------------------------------------
 
@@ -210,7 +237,7 @@ CREATE TABLE `customers` (
   `Login` varchar(50) NOT NULL,
   `Password` varchar(100) NOT NULL,
   `Email` varchar(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `customers`
@@ -232,14 +259,15 @@ CREATE TABLE `orders` (
   `customer_id` int(11) NOT NULL,
   `timestamp` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   `price` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `orders`
 --
 
 INSERT INTO `orders` (`OID`, `customer_id`, `timestamp`, `price`) VALUES
-(17, 2, '2023-01-13 22:48:22', 2);
+(17, 2, '2023-01-13 22:48:22', 2),
+(18, 4, '2023-01-17 11:21:53', 17);
 
 -- --------------------------------------------------------
 
@@ -251,14 +279,17 @@ CREATE TABLE `order_list` (
   `order_id` int(11) NOT NULL,
   `card_id` int(11) NOT NULL,
   `amount` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `order_list`
 --
 
 INSERT INTO `order_list` (`order_id`, `card_id`, `amount`) VALUES
-(17, 85, 1);
+(17, 85, 1),
+(18, 9, 1),
+(18, 13, 1),
+(18, 26, 2);
 
 --
 -- Indexes for dumped tables
@@ -327,7 +358,7 @@ ALTER TABLE `cards`
 -- AUTO_INCREMENT for table `comments`
 --
 ALTER TABLE `comments`
-  MODIFY `COID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `COID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `customers`
@@ -339,7 +370,7 @@ ALTER TABLE `customers`
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `OID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `OID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- Constraints for dumped tables

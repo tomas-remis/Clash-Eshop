@@ -60,7 +60,7 @@ function display_comments($con){
     $sql = "SELECT * FROM comments WHERE card_id=".$_GET["id"].";";
     $result = $con->query($sql);
 
-    $comment_table = "<table>";
+    $comment_table = "<table id='comment_table'>";
 
     while($row = $result->fetch_assoc()){
         $author_sql = "SELECT * FROM customers WHERE CID=".$row["customer_id"].";";
@@ -68,11 +68,11 @@ function display_comments($con){
 
         $remove_button = "";
         if($_SESSION["customerID"] == $row["customer_id"]){
-            $remove_button = "<form method='POST'><button type='submit' name='remove_sub' value='".$row["COID"]."'>Remove Comment</button></form>";
+            $remove_button = "<form method='POST' class='remove_comment'><button type='submit' name='remove_sub' value='".$row["COID"]."'>Remove Comment</button></form>";
         }
         $comment_table .= "
         <tr>
-            <td>
+            <td class='comment'>
                 <div class='author_info'>
                     <div class='author_name'>".$author_name."</div>
                     <div class='post_time'>".$row["comment_timestamp"]."</div>".
@@ -101,11 +101,10 @@ function populate_card_info()
 
     $rating_response = "";
     if(isset($_POST["rating_sub"])){
-        $rating_response = add_rating($con, $_POST["rating_sub"]);
+        add_rating($con, $_POST["rating_sub"]);
     }
 
     elseif(isset($_POST["remove_sub"])){
-        echo "a";
         delete_comment($con);
     }
 
@@ -133,12 +132,12 @@ function populate_card_info()
         </head>
         <body>
             ".load_body()."
-            ".$rating_response."
             <div id='card_container'>
-                <img id='card_img' src='../images/".$card["card_image"]."'>
-                <div id='card_info'>
-                    <h1>".$card["card_name"]."</h1>
-                    <div id='card_description'>".$card["card_description"]."</div>
+                <h1>".$card["card_name"]."</h1>
+                <div id='card_desc_container'>
+                <div id='card_description'>".$card["card_description"]."</div>
+                    <img id='card_img' src='../images/".$card["card_image"]."' class='".$card["card_rarity"]."' alt='".$card["card_name"]."'>
+                    <img id='card_img' src='../images/".$card["card_image"]."' style='visibility: hidden; position: relative;'>
                     <div id='bottom_card_data'>
                         <div id='card_form_container'>
                             <div>
@@ -212,7 +211,6 @@ function add_rating($con, $rating){
         $insert_sql = sprintf("INSERT INTO card_quality VALUES(%d, %d, %d);", $customer, $card_id, $rating);
         $con->query($insert_sql);
     }
-    return "Rating added successfully";
 }
 
 populate_card_info();

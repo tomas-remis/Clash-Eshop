@@ -31,7 +31,7 @@ function load_order_cards(){
     while($row = $result->fetch_assoc()){
         $card_sql = "SELECT * FROM cards WHERE CAID = ".$row["card_id"].";";
         $card_result = $con->query($card_sql)->fetch_assoc();
-        $order_table .= sprintf("<tr><td><img src='../images/%s'><p>%s</p></td><td>%d</td><td>%d</d></tr>", $card_result["card_image"], $card_result["card_name"], $row["amount"], $row["amount"] * $card_result["card_cost"]);
+        $order_table .= sprintf("<tr><td><img alt=%s src='../images/%s'><p>%s</p></td><td>%d</td><td>%d</d></tr>", $card_result["card_name"], $card_result["card_image"], $card_result["card_name"], $row["amount"], $row["amount"] * $card_result["card_cost"]);
     }
     $order_table .= "</table>";
     echo $order_table;
